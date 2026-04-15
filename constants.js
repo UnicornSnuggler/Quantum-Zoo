@@ -50,10 +50,56 @@ export const RARITIES = {
     }
 };
 
+export const PROPERTIES = {
+    COLD: {
+        ID: "COLD",
+        NAME: "Cold"
+    },
+    FRAGILE: {
+        ID: "FRAGILE",
+        NAME: "Fragile"
+    },
+    GAS: {
+        ID: "GAS",
+        NAME: "Gas"
+    },
+    LIQUID: {
+        ID: "LIQUID",
+        NAME: "Liquid"
+    },
+    SOLID: {
+        ID: "SOLID",
+        NAME: "Solid"
+    },
+    TRANSPARENT: {
+        ID: "TRANSPARENT",
+        NAME: "Transparent"
+    }
+};
+
 export const MATERIALS = {
     ICE: {
         ID: "ICE",
         NAME: "Ice",
-        UNIT: "unit"
+        UNIT: "block",
+        UNITS: "blocks",
+        RARITY: RARITIES.COMMON.ID,
+        PROPERTIES: [
+            PROPERTIES.COLD.ID,
+            PROPERTIES.FRAGILE.ID,
+            PROPERTIES.SOLID.ID,
+            PROPERTIES.TRANSPARENT.ID
+        ]
+    },
+    WATER: {
+        ID: "WATER",
+        NAME: "Water",
+        UNIT: "gallon",
+        UNITS: "gallons",
+        RARITY: RARITIES.COMMON.ID,
+        PROPERTIES: [
+            PROPERTIES.LIQUID.ID,
+            PROPERTIES.TRANSPARENT.ID
+        ]
     }
 };
