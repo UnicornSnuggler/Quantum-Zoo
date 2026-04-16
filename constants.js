@@ -81,8 +81,8 @@ export const MATERIALS = {
     ICE: {
         ID: "ICE",
         NAME: "Ice",
-        UNIT: "block",
-        UNITS: "blocks",
+        UNIT: "Block",
+        UNITS: "Blocks",
         RARITY: RARITIES.COMMON.ID,
         PROPERTIES: [
             PROPERTIES.COLD.ID,
@@ -94,8 +94,8 @@ export const MATERIALS = {
     WATER: {
         ID: "WATER",
         NAME: "Water",
-        UNIT: "gallon",
-        UNITS: "gallons",
+        UNIT: "Gallon",
+        UNITS: "Gallons",
         RARITY: RARITIES.COMMON.ID,
         PROPERTIES: [
             PROPERTIES.LIQUID.ID,
@@ -103,3 +103,31 @@ export const MATERIALS = {
         ]
     }
 };
+
+export const OPERATIONS = {
+    FREEZE: {
+        ID: "FREEZE",
+        NAME: "Freeze",
+        VERB_PAST: "Frozen",
+        VERB_PRESENT: "Freeze"
+    },
+    MELT: {
+        ID: "MELT",
+        NAME: "Melt",
+        VERB_PAST: "Melted",
+        VERB_PRESENT: "Melt"
+    }
+};
+
+export const TRANSMUTATIONS = [
+    {
+        INPUT: MATERIALS.ICE.ID,
+        OPERATION: OPERATIONS.MELT.ID,
+        OUTPUT: MATERIALS.WATER.ID
+    },
+    {
+        INPUT: MATERIALS.WATER.ID,
+        OPERATION: OPERATIONS.FREEZE.ID,
+        OUTPUT: MATERIALS.ICE.ID
+    }
+];

@@ -3,7 +3,7 @@
 import chalk from 'chalk';
 import boxen from 'boxen';
 
-import { COLORS, MATERIALS, PROPERTIES, RARITIES } from './constants.js';
+import { COLORS, MATERIALS, PROPERTIES, RARITIES, OPERATIONS, TRANSMUTATIONS } from './constants.js';
 
 function ColorText(text, color) {
     return chalk.hex(color)(text);
@@ -36,6 +36,14 @@ function GetRarityColor(rarityId) {
     return RARITIES[rarityId].COLOR;
 }
 
+function GetMaterialTransmutations(materialId) {
+    return TRANSMUTATIONS.filter(transmutation => transmutation.INPUT == materialId || transmutation.OUTPUT == materialId);
+}
+
+function TransmutationString(transmutation) {
+    return `${MATERIALS[transmutation.INPUT].NAME} can be ${OPERATIONS[transmutation.OPERATION].VERB_PAST.toLowerCase()} into ${MATERIALS[transmutation.OUTPUT].NAME}`;
+}
+
 Info(`Debug: ${ColorText("RARITIES", COLORS.LIGHT_BLUE)}`);
 
 for (const [key, value] of Object.entries(RARITIES)) {
@@ -47,7 +55,8 @@ Info(`Debug: ${ColorText("MATERIALS", COLORS.LIGHT_BLUE)}`);
 for (const [key, value] of Object.entries(MATERIALS)) {
     console.log(`${ColorText(value.NAME, GetRarityColor(value.RARITY))}\n` +
         `   1 ${value.UNIT} of ${value.NAME}, 2 ${value.UNITS} of ${value.NAME}\n` +
-        `   Properties: ${value.PROPERTIES.map((property) => PROPERTIES[property].NAME).join(', ')}`);
+        `   Properties: ${value.PROPERTIES.map((property) => PROPERTIES[property].NAME).join(', ')}\n` +
+        `   Transmutations: ${GetMaterialTransmutations(value.ID).map((transmutation) => TransmutationString(transmutation)).join(', ')}`);
 }
 
 console.log();
